@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            margin-bottom: 15px;
+        }
+        .oauth-buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .oauth-button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 15px;
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+        }
+        .google {
+            background-color: #DB4437;
+        }
+        .github {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        
+        <div th:if="${param.error}" class="error">
+            Invalid username or password.
+        </div>
+        <div th:if="${param.logout}" class="error">
+            You have been logged out.
+        </div>
+        
+        <form th:action="@{/api/auth/signin}" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required autofocus>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <button type="submit">Login</button>
+        </form>
+        
+        <div class="oauth-buttons">
+            <a th:href="@{/oauth2/authorization/google}" class="oauth-button google">Login with Google</a>
+            <a th:href="@{/oauth2/authorization/github}" class="oauth-button github">Login with GitHub</a>
+        </div>
+    </div>
+</body>
+</html>

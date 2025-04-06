@@ -1,0 +1,6 @@
+This is a sample text file.
+It contains multiple lines of text.
+Each line can be read and processed.
+This demonstrates file reading capabilities.
+You can parse this data in various ways.
+For example, you could count words or analyze text.

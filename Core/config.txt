@@ -1,0 +1,27 @@
+# Application Configuration File
+
+[application]
+name = Sample Application
+version = 1.0.0
+debug = true
+max_threads = 10
+
+[database]
+host = localhost
+port = 5432
+username = admin
+password = secret
+database = appdb
+max_connections = 20
+
+[logging]
+level = INFO
+file = app.log
+max_size = 10MB
+backup_count = 5
+
+[security]
+enable_ssl = true
+key_file = server.key
+cert_file = server.crt
+token_expiry = 3600
